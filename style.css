@@ -1,40 +1,53 @@
+/* --- CSS RESET --- */
+
 * {
     padding: 0;
     margin: 0;
     font-family: inherit;
     box-sizing: border-box;
-}
-
-
-html{
-    background-color: rgb(131, 156, 193);
-}
-
-div#root {
+  }
+  
+  /* --- CSS RESET END --- */
+  
+  html {
+    background-color:rgb(99, 174, 244);
+  }
+  
+  div.characters {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 20px;
-
+    justify-content: center;
+  
     padding: 20px;
-}
-
-div.char {
+  }
+  
+  div.char {
     border: 2px solid black;
-}
-
-div.char h2, h3 {
+  }
+  
+  div.char h2, h3 {
     text-align: center;
-}
-
-div.char h2 {
+  }
+  
+  div.char h2 {
     margin-top: 10px;
-}
-
-div.char h3 {
+  }
+  
+  div.char h3 {
     margin-bottom: 10px;
-}
-
-div.char img {
+  }
+  
+  div.char img {
     border-bottom: 2px solid black;
-}
+  }
+  
+  div.buttons {
+    margin: 0 auto;
+    width: fit-content;
+  }
+  
+  div.buttons button {
+    padding: 12px 20px;
+    font-size: 24px;
+  }

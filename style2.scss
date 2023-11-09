@@ -1,5 +1,4 @@
 /* --- CSS RESET --- */
-
 * {
     padding: 0;
     margin: 0;
@@ -8,9 +7,14 @@
   }
   
   /* --- CSS RESET END --- */
-  
   html {
-    background-color: powderblue;
+    background-color: rgb(134, 199, 225);
+  }
+  
+  h1 {
+    text-align: center;
+    margin: 30px 0 20px 0;
+    font-family: "Roboto", sans-serif;
   }
   
   div.characters {
@@ -18,53 +22,38 @@
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
-  
     padding: 20px;
   }
   
   div.char {
     border: 2px solid black;
   }
-  
-  div.char h2, h3 {
+  div.char h2,
+  div.char h3 {
     text-align: center;
   }
-  
   div.char h2 {
     margin-top: 10px;
+    font-family: "Oswald", sans-serif;
   }
-  
   div.char h3 {
     margin-bottom: 10px;
+    font-family: "Roboto", sans-serif;
   }
-  
   div.char img {
     border-bottom: 2px solid black;
   }
   
   div.buttons {
+    position: fixed;
+    bottom: 0;
+    right: 0;
     margin: 0 auto;
+    width: -moz-fit-content;
     width: fit-content;
   }
-  
   div.buttons button {
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     padding: 12px 20px;
     font-size: 24px;
-    background-color: transparent;
-    border: 2px solid #333; 
-    border-radius: 20px; 
-    color: #333; 
-    font-size: 16px; 
-    padding: 10px 20px; 
-    cursor: pointer;
-    transition: all 0.3s ease; 
-  }
-
-  div.buttons button:hover{
-    background-color: #333; /* Background color on hover */
-    color: #fff
-  }
-  
-
- 
+    background-color: transparent
+  }/*# sourceMappingURL=style2.css.map */

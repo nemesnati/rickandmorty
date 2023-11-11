@@ -49,7 +49,6 @@ const buttonEventComponent = (id, url) => {
       charElements.forEach((charElement) =>
         charElement.addEventListener("click", () => {
           const selectedName = charElement.querySelector("h2").innerText; // pl. Rick Sanchez, Morty Smith, Abradolf Lincler
-          const characterList = data.results;
           const selectedChar = characterList.find(
             (char) => char.name === selectedName
           );

@@ -1,20 +1,22 @@
 const rootElement = document.querySelector("#root");
 
 const fetchUrl = (url) => fetch(url).then((res) => res.json());
+let clickCount = 0;
 
 const skeletonComponent = () => `
-  <h1>Rick & Morty app</h1>
+  <h1>Rick and Morty Database</h1>
   <p id="selected-card"></p>
   <div class="characters"></div>
+  <img src="rick.png" alt="rick and morty dancing" id="rick">
   <div class="buttons"></div>
 `;
 
 const characterComponent = (characterData) => ` 
-  <div class="char">
     <img src=${characterData.image}>
-    <h2>${characterData.name}</h2>
-    <h3>appears in: ${characterData.episode.length} episodes</h3>
-  </div>
+    <h2>${characterData.name.toUpperCase()}</h2>
+    <h3>Appears in: ${characterData.episode.length} episodes</h3>
+    <h3>Status: ${characterData.status}</h3>
+    <h4>click to learn more</h4>
 `;
 
 const selectedCharacterComponent = (characterData) => {
@@ -25,11 +27,11 @@ const selectedCharacterComponent = (characterData) => {
   });
 
   return `
-  <h2>${characterData.name}</h2>
-  <h3>${characterData.status}</h3>
-  <h4>${characterData.gender}</h4>
-  <h5>${characterData.species}</h5>
-  <h6>episodes: ${episodesArray.join(", ")}</h6>
+  <h2>FILE</h2>
+  <h2>Name: ${characterData.name}</h2>
+  <h4>Gender: ${characterData.gender}</h4>
+  <h5>Species: ${characterData.species}</h5>
+  <h6>Episodes: ${episodesArray.join(", ")}</h6>
 `;
 };
 
@@ -42,20 +44,6 @@ const buttonEventComponent = (id, url) => {
     rootElement.innerHTML = "LOADING...";
     fetchUrl(url).then((data) => {
       makeDomFromData(data, rootElement);
-
-      const selectedCharElement = document.querySelector("#selected-card");
-
-      const charElements = document.querySelectorAll(".char");
-      charElements.forEach((charElement) =>
-        charElement.addEventListener("click", () => {
-          const selectedName = charElement.querySelector("h2").innerText; // pl. Rick Sanchez, Morty Smith, Abradolf Lincler
-          const selectedChar = characterList.find(
-            (char) => char.name === selectedName
-          );
-          selectedCharElement.innerHTML =
-            selectedCharacterComponent(selectedChar);
-        })
-      );
     });
   });
 };
@@ -70,9 +58,14 @@ const makeDomFromData = (data, rootElement) => {
   const characters = data.results;
 
   characters.forEach((character) => {
-    charactersElement.insertAdjacentHTML(
-      "beforeend",
-      characterComponent(character)
+    const charElement = document.createElement("div");
+    charElement.classList.add("char");
+    charElement.innerHTML = characterComponent(character);
+    charactersElement.appendChild(charElement);
+
+    charElement.addEventListener(
+      "click",
+      createCharClickListener(character, data)
     );
   });
 
@@ -103,25 +96,25 @@ const makeDomFromData = (data, rootElement) => {
   }
 };
 
+const createCharClickListener = (character) => {
+  return () => {
+    const selectedCharElement = document.querySelector("#selected-card");
+    clickCount++;
+    if (clickCount % 2 === 0) {
+      selectedCharElement.style.display = "none";
+    } else {
+      selectedCharElement.style.display = "block";
+    }
+
+    selectedCharElement.innerHTML = selectedCharacterComponent(character);
+    selectedC.push(character);
+  };
+};
+
 const init = () => {
   rootElement.innerHTML = "LOADING...";
   fetchUrl("https://rickandmortyapi.com/api/character").then((data) => {
     makeDomFromData(data, rootElement);
-
-    const selectedCharElement = document.querySelector("#selected-card");
-
-    const charElements = document.querySelectorAll(".char");
-    charElements.forEach((charElement) =>
-      charElement.addEventListener("click", () => {
-        const selectedName = charElement.querySelector("h2").innerText; // pl. Rick Sanchez, Morty Smith, Abradolf Lincler
-        const characterList = data.results;
-        const selectedChar = characterList.find(
-          (char) => char.name === selectedName
-        );
-        selectedCharElement.innerHTML =
-          selectedCharacterComponent(selectedChar);
-      })
-    );
   });
 };
 

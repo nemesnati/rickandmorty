@@ -119,4 +119,9 @@ div.buttons button {
   h1 {
     margin: 0;
   }
+}
+@media (max-height: 700px) {
+  #rick {
+    width: 150px;
+  }
 }/*# sourceMappingURL=style2.css.map */

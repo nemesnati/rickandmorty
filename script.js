@@ -1,6 +1,7 @@
 const rootElement = document.querySelector("#root");
 
 const fetchUrl = (url) => fetch(url).then((res) => res.json());
+
 let clickCount = 0;
 
 const skeletonComponent = () => `
@@ -105,9 +106,7 @@ const createCharClickListener = (character) => {
     } else {
       selectedCharElement.style.display = "block";
     }
-
     selectedCharElement.innerHTML = selectedCharacterComponent(character);
-    selectedC.push(character);
   };
 };
 

@@ -136,3 +136,9 @@ div.buttons {
     margin: 0;
   }
 }
+
+@media (max-height: 700px) {
+  #rick{
+    width: 150px;
+  }
+}

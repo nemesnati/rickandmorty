@@ -72,6 +72,10 @@ div.char h3 {
 div.char h4 {
   padding: 5px 5px;
   font-family: "rickMorty";
+  cursor: pointer;
+}
+div.char h4:hover {
+  color: #27e9ff;
 }
 div.char img {
   border-bottom: 2px solid rgb(0, 0, 0);
@@ -90,6 +94,7 @@ div.buttons button {
   background-color: #27e9ff;
   opacity: 75%;
   border: none;
+  cursor: pointer;
 }
 
 #rick {
